@@ -1,0 +1,32 @@
+---
+# vars file for jboss
+jboss_staging: "{{app_dir}}/staging"
+deploy_scripts: "{{jboss}}/scripts"
+jboss_logs: "{{jboss}}/logs"
+jboss_tmp: "/opt"
+jboss_standalone_configuration: "{{jboss}}/standalone/configuration"
+jboss_standalone_deployments: "{{jboss}}/standalone/deployments"
+
+
+start_jboss_script: startServer.sh
+stop_stop_script: stopServer.sh
+
+
+#jboss_repository_url: https://sdcdev01stal01ltcrus.blob.core.windows.net/tso/Midtier/Software/Jboss/jboss-as-7.1.1.Final.zip?st=2018-06-22T18%3A52%3A05Z&se=2018-06-23T18%3A52%3A05Z&sp=rl&sv=2017-07-29&sr=b&sig=I%2FWKMzVvk7FnyBrML5lc92JB2frvP0SHxWw%2BRmeafy8%3D
+#jboss_module_file: https://sdcdev01stal01ltcrus.blob.core.windows.net/tso/Midtier/Software/Jboss/jboss-modules.jar?st=2018-06-22T19%3A14%3A57Z&se=2018-06-23T19%3A14%3A57Z&sp=rl&sv=2017-07-29&sr=b&sig=r17swpiLKoClyrcwci9DvjyKsAGs1so9R97dr5ZDQHk%3D
+
+jboss_directories:
+  - "{{jboss_staging}}"
+  - "{{deploy_scripts}}" 
+  - "{{jboss_logs}}"
+  - "{{jboss_standalone_configuration}}"
+  
+
+deploy_apps:
+  - deploy_warName:    "jboss-helloworld.war"
+    deploy_appname:    "HelloWorld"
+    deploy_appcontext: "test1"
+  - deploy_warName:    "ticket-monster.war"
+    deploy_appname:    "ticket-monster"
+    deploy_appcontext: "test2" 
+
